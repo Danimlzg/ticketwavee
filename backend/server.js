@@ -10,7 +10,7 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 
 const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
@@ -42,6 +42,10 @@ app.get('/', (req, res) => {
   res.send('Servidor corriendo');
 });
 
-app.listen(port, () => {
+app.get('/prueba', (req, res) => {
+  res.send('Funciona desde Express');
+});
+
+app.listen(port, '0.0.0.0', () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });
